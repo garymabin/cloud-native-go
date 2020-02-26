@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cloud-native-go
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: cloud-native-go
+    spec:
+      containers:
+        - name: cloud-native-go
+          image: cloud-native-go:red
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8082
+          env:
+            - name: PORT
+              value: '8082'
+  selector:
+    matchLabels:
+      app: cloud-native-go
+
+

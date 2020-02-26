@@ -1,0 +1,8 @@
+apiVersion: "aadpodidentity.k8s.io/v1"
+kind: AzureIdentity
+metadata:
+  name: aks-app-gw-mi
+spec:
+  type: 0
+  ResourceID: /subscriptions/59265ccc-85ad-4fbe-828a-2bb4199cd22f/resourcegroups/aks-poc/providers/Microsoft.ManagedIdentity/userAssignedIdentities/aks-app-gw-mi
+  ClientID: 954fa39b-a93f-4cdc-bb76-b3bd4d9d9411

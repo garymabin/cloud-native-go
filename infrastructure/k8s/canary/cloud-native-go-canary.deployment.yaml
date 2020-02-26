@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cloud-native-go-blue
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: cloud-native-go-blue
+    spec:
+      containers:
+        - name: cloud-native-go
+          image: cloud-native-go:blue
+          ports:
+            - containerPort: 8082
+          env:
+            - name: PORT
+              value: '8082'
+  selector:
+    matchLabels:
+      app: cloud-native-go-blue
+
+

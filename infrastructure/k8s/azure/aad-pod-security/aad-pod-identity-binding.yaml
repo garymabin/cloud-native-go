@@ -1,0 +1,7 @@
+apiVersion: "aadpodidentity.k8s.io/v1"
+kind: AzureIdentityBinding
+metadata:
+  name: aks-app-gw-mi-binding
+spec:
+  AzureIdentity: aks-app-gw-mi
+  Selector: cloud-native-go
