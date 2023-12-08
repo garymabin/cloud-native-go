@@ -1,0 +1,16 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: cloud-native-go
+  description: An example of a Backstage application.
+  annotations:
+    kafka.apache.org/consumer-groups: dev/test-consumers
+    kafka.apache.org/dashboard-urls: dev/test-consumers/dashboard-url
+  # Example for optional annotations
+  # annotations:
+  #   github.com/project-slug: backstage/backstage
+  #   backstage.io/techdocs-ref: dir:.
+spec:
+  type: service
+  owner: john@example.com
+  lifecycle: experimental
