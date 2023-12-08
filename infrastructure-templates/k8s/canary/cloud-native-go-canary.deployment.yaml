@@ -7,7 +7,8 @@ spec:
   template:
     metadata:
       labels:
-        app: cloud-native-go-blue
+        app: cloud-native-go
+        version: blue
     spec:
       containers:
         - name: cloud-native-go
@@ -19,6 +20,6 @@ spec:
               value: '8082'
   selector:
     matchLabels:
-      app: cloud-native-go-blue
+      version: blue
 
 

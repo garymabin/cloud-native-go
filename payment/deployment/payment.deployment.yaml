@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cloud-native-go-payment
+  namespace: cloud-native-go
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: cloud-native-go-payment
+        version: v1
+    spec:
+      containers:
+        - name: cloud-native-go-payment
+          image: garymabin/cloud-native-go-payment:b3e55e2c6f92
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8081
+          env:
+            - name: PORT
+              value: '8081'
+      imagePullSecrets:
+        - name: dockerhubcfg
+  selector:
+    matchLabels:
+      app: cloud-native-go-payment
+
+

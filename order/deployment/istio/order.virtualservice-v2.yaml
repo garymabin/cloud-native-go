@@ -1,0 +1,35 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: cloud-native-go-order-v2
+  namespace: cloud-native-go
+spec:
+  hosts:
+    - "order.cng.me"
+  gateways:
+    - cloud-native-go-order
+  http:
+    - match:
+        - uri:
+            prefix: /binma-latest/cng/
+      route:
+        - destination:
+            host: cloud-native-go-order
+            subset: v2
+            port:
+                number: 80
+      rewrite:
+        uri: /
+---
+
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: cloud-native-go-order-v2
+  namespace: cloud-native-go
+spec:
+  host: cloud-native-go-order
+  subsets:
+    - name: v2
+      labels:
+        version: v2

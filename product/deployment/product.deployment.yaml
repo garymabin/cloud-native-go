@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cloud-native-go-product
+  namespace: cloud-native-go
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: cloud-native-go-product
+    spec:
+      containers:
+        - name: cloud-native-go-product
+          image: garymabin/cloud-native-go-product:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8081
+          env:
+            - name: PORT
+              value: '8081'
+      imagePullSecrets:
+        - name: dockerhubcfg
+  selector:
+    matchLabels:
+      app: cloud-native-go-product
+
+

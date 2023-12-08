@@ -1,7 +1,7 @@
 FROM golang:1.15.0 as golang-builder
 MAINTAINER binma@thoughtworks.com
 
-ENV SOURCES /go/src/github.com/garymabin/cloud-native-go/facade
+ENV SOURCES /go/src/github.com/garymabin/cloud-native-go/product
 
 COPY . ${SOURCES}
 
@@ -13,7 +13,7 @@ FROM alpine:latest
 
 WORKDIR /root/
 
-COPY --from=golang-builder /go/src/github.com/garymabin/cloud-native-go/facade/app .
+COPY --from=golang-builder /go/src/github.com/garymabin/cloud-native-go/product/app .
 
 ENV PORT 8080
 

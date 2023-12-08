@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cloud-native-go-facade
+  namespace: cloud-native-go
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: cloud-native-go-facade
+    spec:
+      containers:
+        - name: cloud-native-go-facade
+          image: garymabin/cloud-native-go-facade:3917403970ef
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8081
+          env:
+            - name: PORT
+              value: '8081'
+            - name: ORDER_SERVICE
+              valueFrom:
+                configMapKeyRef:
+                  name: cloud-native-go-facade-config
+                  key: orderService.url
+            - name: PRODUCT_SERVICE
+              valueFrom:
+                configMapKeyRef:
+                  name: cloud-native-go-facade-config
+                  key: productService.url
+      imagePullSecrets:
+        - name: dockerhubcfg
+  selector:
+    matchLabels:
+      app: cloud-native-go-facade
+
+

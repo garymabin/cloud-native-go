@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cloud-native-go-facade-config
+  namespace: cloud-native-go
+data:
+  orderService.url: http://10.43.38.61
+  productService.url: http://10.43.109.222
+
+

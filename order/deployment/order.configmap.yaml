@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cloud-native-go-order-config
+  namespace: cloud-native-go
+data:
+  paymentService.url: http://cloud-native-go-payment
+
+

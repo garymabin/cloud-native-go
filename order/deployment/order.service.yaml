@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: cloud-native-go-order
+  namespace: cloud-native-go
+spec:
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8082
+  selector:
+    app: cloud-native-go-order
+

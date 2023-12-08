@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cloud-native-go-order-v2
+  namespace: cloud-native-go
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: cloud-native-go-order
+        version: v2
+    spec:
+      containers:
+        - name: cloud-native-go-order
+          image: garymabin/cloud-native-go-order:v2
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8082
+          env:
+            - name: PORT
+              value: '8082'
+            - name: PAYMENT_SERVICE
+              valueFrom:
+                configMapKeyRef:
+                  name: cloud-native-go-order-config
+                  key: paymentService.url
+
+  selector:
+    matchLabels:
+      app: cloud-native-go-order
+
+

@@ -8,5 +8,5 @@ spec:
       port: 80
       targetPort: 8082
   selector:
-    app: cloud-native-go-blue
+    app: cloud-native-go
 
