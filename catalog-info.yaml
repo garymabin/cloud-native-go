@@ -4,8 +4,8 @@ metadata:
   name: cloud-native-go
   description: An example of a Backstage application.
   annotations:
-    kafka.apache.org/consumer-groups: dev/marketplace_financial_settlement-susttest
-    kafka.apache.org/dashboard-urls: dev/marketplace_financial_settlement-susttest/dashboard-url
+    kafka.apache.org/consumer-groups: dx_starter_cluster/test-confluent-general-key
+    kafka.apache.org/dashboard-urls: dx_starter_cluster/test-confluent-general-key/dashboard-url
   # Example for optional annotations
   # annotations:
   #   github.com/project-slug: backstage/backstage
